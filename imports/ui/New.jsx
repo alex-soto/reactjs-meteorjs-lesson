@@ -1,10 +1,35 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+import { Players } from '../api/players';
 
 export default class New extends Component {
+  submitPlayer(event) {
+    event.preventDefault();
+
+    Players.insert({
+      name: this.refs.name.value,
+      team: this.refs.team.value,
+      ballManipulation: this.refs.ballManipulation.value,
+      kickingAbilities: this.refs.kickingAbilities.value,
+      passingAbilities: this.refs.passingAbilities.value,
+      duelTackling: this.refs.duelTackling.values,
+      fieldCoverage: this.refs.fieldCoverage.value,
+      blockingAbilities: this.refs.blockingAbilities.value,
+      gameStrategy: this.refs.gameStrategy.value,
+      playmakingRisks: this.refs.playmakingRisks.value,
+      notes: this.refs.notes.value,
+      createdAt: new Date()
+    });
+
+    console.log("Success! Player submitted.");
+
+    browserHistory.push('/');
+  }
+
   render() {
     return (
       <div className="row">
-        <form className="col s12">
+        <form className="col s12" onSubmit={this.submitPlayer.bind(this)} >
           <h3>Add a new player</h3>
           <div className="row">
             <div className="input-field col s6">
@@ -76,7 +101,7 @@ export default class New extends Component {
 
           <div className="input-field col s6">
             <h5>Game Strategy</h5>
-            <select className="browser-default" ref="blockingAbilities">
+            <select className="browser-default" ref="gameStrategy">
               <option value="0">0 - Hasn't demonstrated skills</option>
               <option value="1">1 - Needs improvement</option>
               <option value="2">2 - Skill acquired</option>
