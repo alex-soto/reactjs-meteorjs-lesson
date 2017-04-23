@@ -22,7 +22,6 @@ export default class App extends Component {
             <div className="col s12 m5"><TeamList /></div>
           </div>
         </div>
-        {/* <RaisedButton label="Oh Yeah we did it!" /> */}
       </MuiThemeProvider>
     )
   }
