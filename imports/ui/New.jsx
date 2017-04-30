@@ -18,7 +18,8 @@ export default class New extends Component {
       gameStrategy: this.refs.gameStrategy.value,
       playmakingRisks: this.refs.playmakingRisks.value,
       notes: this.refs.notes.value,
-      createdAt: new Date()
+      createdAt: new Date(),
+      owner: Meteor.userId()
     });
 
     console.log("Success! Player submitted.");
